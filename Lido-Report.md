@@ -3,9 +3,13 @@
 
 This post chronicles my experience auditing Lido Finance's Community Staking Module v2 (CSM). As one of my first comprehensive staking protocol audits, CSM v2 provided an excellent introduction to validator economics and liquid staking mechanics.
 
+<div align="center">
+  <!-- Your existing hero image -->
+  <img src="https://github.com/rubencrxz/rubencrxz/blob/main/assets/74f1d2ce-9de2-4787-966e-fe6f1d3fa167.png" alt="Image" width="70%" height="60%"/>
+  <br><br>
+</div>
+
 ## Lido Finance
-
-
 
 As its Whitepaper states, Lido DAO is a community that builds liquid staking services for Ethereum. It allows users to earn staking rewards without locking assets or maintaining staking infrastructure.
 The core mechanism works as follows: Users deposit their ether into Lido smart contracts and receive stETH -- a tokenized version of staked ether -- in return. The DAO-controlled smart contracts then stake tokens with DAO-picked node operators. Users' deposited funds are controlled by the DAO; node operators never have direct access to the users' assets.
@@ -306,7 +310,8 @@ Temporary Node Lock on Penalty Evidence:
 When evidence for a penalty is submitted, implement a temporary lock on the node operator's ability to call `voluntaryEject`. This can be achieved by:
 Adding a state variable (`isPenaltyPending`) in the Ejector or CSM contract, set to true when penalty conditions are met, reverting `voluntaryEject` if `isPenaltyPending` is true for the node operator and clearing the lock after the penalty is resolved.
 
-## Valid Low´s
+
+## Valid Low´s from the Contest
 
 ### [L-01] Batch Operation Fully Reverts on Invalid Ejection Entry
 Type: Logic Error / Design Flaw
